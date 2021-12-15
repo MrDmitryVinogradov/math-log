@@ -1,4 +1,4 @@
-import Character from '../classes/Character'
+import Character from './Character';
 
 export default class MathCharacter extends Character {
   constructor(name, distance, stoned) {
@@ -8,10 +8,11 @@ export default class MathCharacter extends Character {
   }
 
   set stoned(arg) {
-    this._stoned = arg
+    this._stoned = arg;
   }
+
   get stoned() {
-    return this._stoned
+    return this._stoned;
   }
 
   set attack(arg) {
@@ -21,21 +22,16 @@ export default class MathCharacter extends Character {
   get attack() {
     let mathAttack = 0;
     if (this.distance > 0 && this.distance < 10) {
-      let attackPercent = 1.1 - this.distance * 0.1;
-      if (this._stoned === false) {
-        mathAttack = this._attack * attackPercent;
-        return Math.round(mathAttack)
-      }
+      const attackPercent = 1.1 - this.distance * 0.1;
+      mathAttack = this._attack * attackPercent;
       if (this._stoned === true) {
         mathAttack = (this._attack * attackPercent) - Math.log2(this.distance) * 5;
-        return Math.round(mathAttack)
       }
+      return Math.round(mathAttack);
     }
     if (this.distance >= 10) {
-      return 0
+      return 0;
     }
-    if (this.distance === 0) {
-      return this._attack
-    }
+    return this._attack;
   }
 }

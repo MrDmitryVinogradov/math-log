@@ -11,9 +11,9 @@ test('name length', () => {
 
 test(' get stoned', () => {
   const magician = new Magician('User');
-  magician._stoned = true;
+  magician.stoned = true;
   expect(magician.stoned).toBe(true);
-})
+});
 
 test('stoned attack', () => {
   const magician = new Magician('User');
@@ -21,7 +21,7 @@ test('stoned attack', () => {
   magician.distance = 2;
   magician.stoned = true;
   expect(magician.attack).toBe(85);
-})
+});
 
 test('unstoned attack', () => {
   const magician = new Magician('User');
@@ -29,7 +29,7 @@ test('unstoned attack', () => {
   magician.distance = 2;
   magician.stoned = false;
   expect(magician.attack).toBe(90);
-})
+});
 
 test('too far', () => {
   const magician = new Magician('User');
@@ -37,13 +37,12 @@ test('too far', () => {
   magician.distance = 11;
   magician.stoned = false;
   expect(magician.attack).toBe(0);
-})
+});
 
-test('too far', () => {
+test('not too far', () => {
   const magician = new Magician('User');
-  magician.attack = 100;
+  magician._attack = 100;
   magician.distance = 0;
-  magician.stoned = false;
+  magician._stoned = false;
   expect(magician.attack).toBe(100);
-})
-
+});
